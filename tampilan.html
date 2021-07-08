@@ -1,77 +1,147 @@
-    <!doctype html>
-    <html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-
-        <title>POS DENGAN JS</title>
-        <style>
-            .jumbotron{
-                height: 400px;
-                background-image: url("https://images.pexels.com/photos/5953526/pexels-photo-5953526.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
-                background-size: cover;
-                background-position-y: -200px;
-                color: white;
-                text-align: center;
-            }
-            .judullist{
-                height: 50px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-            <h1 class="display-4 mt-5 pt-5">POS MAKANAN JS</h1>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-            <div class="col-3">
-                <div class="listkeranjang" id="listkeranjang">
-                    <div class="judullist bg-dark rounded text-center text-white pt-2">List Item</div>
-                    <div class="card mb-3 mt-3" style="width: 16rem;">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <title>Starbhak Mart</title>
+</head>
+<body>
+<!-- As a heading -->
+<nav class="navbar navbar-light" style="background-color: #135f85;">
+<span class="navbar-brand mb-0 h1 text-light">Starbhak Mart</span>
+</nav>
+<style>
+    .jumbotron{
+        height: 400px;
+        background-image: url("https://images.pexels.com/photos/5953526/pexels-photo-5953526.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+        background-size: cover;
+        background-position-y: -200px;
+        color: white;
+        text-align: center;
+    }
+    .judullist{
+        height: 50px;
+    }
+</style>
+</head>
+<body>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+    <h1 class="display-4 mt-5 pt-5">POS MAKANAN JS</h1>
+    </div>
+</div>
+    <div class="container">
+        <div class="row">
+        <div class="container" style="padding-top: 20px;">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-left:365px; width:68.6%;">
+    <a class="navbar-brand" href="#">Item List</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto">
+        <a class="nav-link fa fa-search active" style="font-size: 30px;" href="#"></a>
+        <a class="nav-link" href="#"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAY1BMVEX///8AAADR0dH4+PheXl4tLS3Z2dnU1NTh4eH7+/vo6OjNzc1NTU0mJibr6+uwsLCfn58VFRXx8fEfHx9tbW2Ojo54eHhISEi5ubmVlZVAQEC+vr6GhoZiYmI0NDQaGhqnp6fD1Q59AAADE0lEQVR4nO3dCXLqMBAEUA8GYwLBxizBCRDuf8of+FABvKlKSk1Nq98Jpgsvkiw0SUJEREREREREREREREREREQEaZkVZV0W2VK7kL+R1wu5W9S5djnB5Ud5NsbKONtJ026mXVY4+aQloMgk0y4slHlrvou5dmlhjDoDioy0iwvhrSegyJt2eQF89ib81C7PX9kbUKTULtDXciCgiPUBzmEw4UG7RE+DAUW0S/Tz5ZDwS7tIL22jtVc77SK9rBwSrrSL9JE6BBSxPALPnBJaHoD3DUl/WR6cds8qHlmeYUydEk61y/TQP6+4Mz2/cEqoXaSXD4eAH9pFehmaO13Ynj/lDglN34Yul6nti9RlcmF7avFjMRBwoV2gt6GhqeVB6U3/49T2g/Tm9ZvMo6N2cWGMOwOOtUsLpWstw/b6xZOiNWChXVZIy+aVerS+FPwq3zyuSq02AG+Jhmp+OJ6+5ft0PMwr7WL+zCytUstLa0RERERERET0Xz6dT7E26T8abe8b2idbyxtMOqTn9dNa4vqcapcU1v69sV76vtcuKqRN65r3RrusYKrmD3i7H0GWvat1R8CfuxEjYtcveL0ZtYsLof0eBLoX970BRcw/UdO+a/R6nVp/L54HAoqctUv01P0cvVtrl+jHZRu07THq1iHhVrtIL+1/j3020S7Si0NA23uEXbaXilieEuPv1ef/Lez/hvj3If6zNIL3If6YBn9cij+3iGB+iD/Hx1+niWCtrf+daPtdeIe/5p1UXb8iyneLBP/bUxLB98MIvgFfgH/Hv8Hei0FEREREREQUD+wzFdDPxUA/26TlfJoxzoJ3EsEZQ/DnRMGf9dUdECQi/Jl7+Ocmwp99iX9+KfwZtPjnCOOfBY1/nrdDQNt7hPHP1cffq4//fwv8HiX4fWbwewXh93uKoGcXft81/N55EfQ/xO9hid+HNIJeshH0A8bv6RxBX+4kyU+t+XB6qyfJrG30tjM94m7IX/vpjPG27Of17wL/osbLd7XMirIui8z8MIaIiIiIiIiIiIiIiIiIiIio3T+1Sx9AtqmikgAAAABJRU5ErkJggg==" style="width: 30px"></a>
+        <a class="nav-link fas fa-sort-amount-down-alt" style="font-size: 30px;" href="#"></a>
+    </div>
+    </div>
+</nav>
+</div>
+            <div class="col-sm-4" style="margin-top: -60px;">
+            <div class="dropdown">
+                <button class="btn btn-primary btn-block mb-3 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Take Away
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Delivery by Go food</a>
+                <a class="dropdown-item" href="#">Delivery by Grab</a>
+                <a class="dropdown-item" href="#">Delivery by Gojek</a>
                 </div>
-            </div>
-            <table width=100%>
-                <tbody>
-                    <tr>
-                        <td>Diskon (5%)</td>
-                        <td>Rp. <span id="discount"></span></td>
-                    </tr>
-                    <tr>
-                        <td>PPN (10%)</td>
-                        <td>Rp. <span id="pajak"></span></td>
-                    </tr>
-                    <tr class="bg-dark text-white">
-                        <td>Total Bayar (10%)</td>
-                        <td>Rp. <span id="totalbayar"></span></td>
-                    </tr>
-                </tbody>
-            </table>
-            <button type="button" class="btn btn-primary mt-3 btn-block">Bayar</button>
-        </div>
-            <div class="col-9" id="listproduk">
-                <!-- list produk -->
-            </div>
-            </div>
-        </div>
-        <script src="logika.js"></script>
-        <!-- Optional JavaScript; choose one of the two! -->
+                </div>
+                <div class="judullist bg-primary btn-block pt-2 pb-2  text-center text-dark fas fa-user-alt">
+                    <strong class="text-light" style="font-family:sans-serif;">Mang Jay</strong>
+                </div>
+                <div class="listkeranjang" id="listkeranjang">
+                </div>
+                <table width="100%">
+                    <tbody>
+                        <!-- <tr>
+                            <td>Total Barang</td>
+                            <td><span id="nama"></span></td>
+                        </tr> -->
+                        <tr>
+                            <td>Discount (5%)</td>
+                            <td>Rp. <span id="discount"></span></td>
+                        </tr>
+                        <tr>
+                            <td>PPN (10%)</td>
+                            <td>Rp. <span id="pajak"></span></td>
+                        </tr>
+                        <tr class="bg-primary text-white">
+                            <td>Total Bayar</td>
+                            <td>Rp. <span id="totalbayar"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
 
-        <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+                <button type="button" class="btn btn-primary mt-3 btn-block" onclick="bayardisini()">
+                    Bayar
+                </button>
+            </div>
 
-        <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-        -->
-    </body>
-    </html>
+            <div class="col-sm-8 pt-2 mt-2 border" id="listproduk">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Item List</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link fa fa-search" href="#"></a>
+                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="#">Pricing</a>
+                </div>
+                </div>
+            </nav>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+    <div class="mt-4">
+        <table id="tmpltable" class="table table-bordered text-center text-dark">
+            <thead>
+                <tr>
+                    <th scope="col ">Nama Barang</th>
+                    <th scope="col ">Harga</th>
+                    <th scope="col ">Quantity</th>
+                </tr>
+            </thead>
+            <tbody id="tampildata"></tbody>
+        </table>
+    </div>
+</div>
+<footer class="mt-5 text-light" style="background-color: #135f85;height:100px;">
+    <p class="text-center pt-4">&copy; copyright Starbhak mart  2020  </p>
+  </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="logika.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+    </script>
+</body>
+</html>
